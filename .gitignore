@@ -1,0 +1,5 @@
+# ignorowanie plikow .exe
+*.exe
+
+# ignorowanie pliku w z pakietu auth_var
+**/myauthkey/myauthkey.go

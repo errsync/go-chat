@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Komunikator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <style>
+      ul#messages {
+        list-style: none;
+      }
+      ul#messages li {
+        margin-bottom: 2px;
+      }
+      ul#messages li img {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul id="messages"></ul>
+        </div>
+      </div>
+      <form id="chatbox" role="form">
+        <div class="form-group">
+          <label for="message">Wyślij wiadomość jako {{.UserData.name}}</label>
+          lub <a href="/logout">wyloguj się</a>.
+          <textarea id="message" class="form-control"></textarea>
+        </div>
+        <input type="submit" value="Wyślij" class="btn btn-default" />
+      </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(function () {
+        var socket = null;
+        var msgBox = $("#chatbox textarea");
+        var messages = $("#messages");
+
+        $("#chatbox").submit(function () {
+          if (!msgBox.val()) return false;
+          if (!socket) {
+            alert("Błąd: Brak połączenia z serwerem.");
+            return false;
+          }
+
+          socket.send(JSON.stringify({ Message: msgBox.val() }));
+          msgBox.val("");
+          return false;
+        });
+
+        if (!window["WebSocket"]) {
+          alert(
+            "Błąd: Twoja przeglądarka nie obsługuje technologii WebScocket."
+          );
+        } else {
+          socket = new WebSocket("ws://{{.Host}}/room");
+          socket.onclose = function () {
+            //alert("Połączenie zostało zamknięte.");
+          };
+          socket.onmessage = function (e) {
+            var msg = JSON.parse(e.data);
+            messages.append(
+              $("<li>").append(
+                $("<img>")
+                  .attr("title", msg.Name)
+                  .css({
+                    width: 50,
+                    verticalAlign: "middle",
+                  })
+                  .attr("src", msg.AvatarURL),
+                $("<span>").text(msg.Message)
+              )
+            );
+          };
+        }
+      });
+    </script>
+  </body>
+</html>
