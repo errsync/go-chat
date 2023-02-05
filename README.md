@@ -13,7 +13,7 @@ One room chat app and authorization from facebook, github and google
 
 ## Screenshots
 
-![App Screenshot](https://github.com/errsync/go-chat/templates/screen.png)
+![App Screenshot](https://photos.app.goo.gl/BnxjsXBsF9YW4XmKA)
 
 
 ## Run Locally
