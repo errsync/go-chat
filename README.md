@@ -8,10 +8,6 @@ One room chat app and authorization from facebook, github and google
 
 - localhost:808/upload
 
-## Screenshots
-
-![App Screenshot](https://www.dropbox.com/s/cmhnt13dc4fa3tk/screen.png?dl=0)
-
 ## Run Locally
 
 Clone the project
@@ -39,3 +35,7 @@ Start the server
 ```bash
   ./chate.exe
 ```
+
+## Screenshots
+
+![App Screenshot](screenshot/screen.png)
