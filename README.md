@@ -1,20 +1,16 @@
-
 # go-chat
 
 One room chat app and authorization from facebook, github and google
-
 
 ## Browser path
 
 - localhost:8080/chat
 
-- localhost:808/upload 
-
+- localhost:808/upload
 
 ## Screenshots
 
-![App Screenshot]()
-
+![App Screenshot](https://www.dropbox.com/s/cmhnt13dc4fa3tk/screen.png?dl=0)
 
 ## Run Locally
 
@@ -29,6 +25,7 @@ Go to the project directory
 ```bash
   cd go-chat
 ```
+
 Change in authkey file authentication varaiables
 
 Install dependencies
@@ -42,4 +39,3 @@ Start the server
 ```bash
   ./chate.exe
 ```
-
