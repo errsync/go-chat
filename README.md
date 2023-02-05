@@ -13,7 +13,7 @@ One room chat app and authorization from facebook, github and google
 
 ## Screenshots
 
-![App Screenshot](https://photos.app.goo.gl/BnxjsXBsF9YW4XmKA)
+![App Screenshot]()
 
 
 ## Run Locally
